@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见问题答疑</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #00000000;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .faq-question:hover {
+            color: #007bff;
+        }
+        .faq-question.active {
+            color: #007bff;
+            border-bottom-color: #007bff;
+        }
+        .faq-arrow {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            margin-top: -10px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+        <!-- FAQ 1 -->
+        <div class="faq-question" onclick="toggleFAQ('faq1')">如何使用自定义房间功能?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq1" class="faq-answer">
+            勾选禁用英雄、配置方案。完成后，点击“复制链接”后打开游戏并把链接分享给其他玩家，他们就可以通过链接加入您的自定义房间。详细教程请点击首页的"使用教程"查看。
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-question" onclick="toggleFAQ('faq2')">我的自定义方案无法保存怎么办?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq2" class="faq-answer">
+            请确保您的浏览器支持本地存储功能。如果仍然无法保存，请尝试使用不同的浏览器或清除浏览器缓存后再次尝试。
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-question" onclick="toggleFAQ('faq3')">如何导入或导出我的自定义方案?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq3" class="faq-answer">
+            在“方案管理”部分，您可以找到“导入方案”和“导出方案”的选项。点击“导出方案”将复制该方案的配置信息，点击“导入方案”粘贴您所复制的配置信息。
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-question" onclick="toggleFAQ('faq4')">
+            为什么我的配置参数在局内不生效?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq4" class="faq-answer">
+            请确保您的方案已保存使用。如果仍然无法应用，请检查游戏地图，所有娱乐模式均不能自定义。并且如果房间内除了您自己其他的全是人机的话，禁用英雄配置会失效。
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-question" onclick="toggleFAQ('faq5')">如何订阅网站的更新?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq5" class="faq-answer">
+            您可以关注群公告的通知，或者编辑邮件发送到3465221490@qq.comㅤ届时网站更新时将第一时间通知您。
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-question" onclick="toggleFAQ('faq6')">一直显示“加载中...请稍等”怎么办?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq6" class="faq-answer">
+            请检查您的网络连接是否稳定。如果网络没有问题，尝试刷新页面或清除浏览器缓存。如果问题依旧，请尝试联系作者。
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-question" onclick="toggleFAQ('faq7')">如何联系网站管理员或作者?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq7" class="faq-answer">
+            您可以加入群聊后，直接在群内询问。
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-question" onclick="toggleFAQ('faq8')">我的方案丢失了，如何恢复?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq8" class="faq-answer">
+            如果您的方案丢失，我们建议您复制备份您的方案。如果丢失，我们可能无法恢复您的方案，因为我们的网站是静态的，不支持数据恢复。
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-question" onclick="toggleFAQ('faq9')">网站支持哪些浏览器?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq9" class="faq-answer">
+            我们的网站支持QQ内核、系统浏览器、最新版本的Chrome、Firefox、Safari和Edge浏览器。如果您使用的是旧版本浏览器，可能无法正常显示或使用网站功能。
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-question" onclick="toggleFAQ('faq10')">如何参与网站的改进和反馈?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq10" class="faq-answer">
+            我们非常欢迎用户提出宝贵的意见和建议。您可以通过网站的“意见反馈”按钮提交您的想法，或者直接在群聊中联系我们。
+        </div>
+        <div class="faq-question" onclick="toggleFAQ('faq11')">网站需要收费吗?
+            <span class="faq-arrow">▾</span>
+        </div>
+        <div id="faq11" class="faq-answer">
+            迟言在此向您保证，本网站永久免费使用，我们连赞助也是一直提倡自愿原则，感谢您的支持。
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.addEventListener('click', function() {
+                        var answer = this.nextElementSibling;
+                        var isExpanded = answer.style.display === 'block';
+                        answer.style.display = isExpanded ? 'none' : 'block';
+                        this.classList.toggle('active');
+                        this.querySelector('.faq-arrow').textContent = isExpanded ? '▾' : '▴';
+                    });
+                });
+            });
+        </script>
+</body>
+</html>

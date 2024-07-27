@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="mdui-theme-light">
+
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("./sw.js")
+                .then((registration) => {
+                    console.log("Service Worker registered with scope:", registration.scope);
+                })//死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码
+                .catch((error) => {
+                    console.error("Service Worker registration failed:", error);
+                });//死妈山海
+        }
+
+        if (navigator.userAgent.indexOf("MicroMessenger") != -1) {
+            document.write('<iframe id="fullscreen-iframe" src="about:blank" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; margin: 0; padding: 0; overflow: hidden; z-index: 999999;"></iframe>');
+            const iframe = document.getElementById("fullscreen-iframe");
+            iframe.src = window.location.origin + "/openurl.html";
+        }//死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码死妈山海还好意思来扒你爹源码
+        var issupport = "any" in Promise;
+
+        if (issupport == false) {
+            const userAgent = navigator.userAgent;
+            alert("你当前浏览器版本过低 请更新浏览器访问 点击确认将自动跳转浏览器下载链接");
+            // macOS检测
+            if (/Macintosh|Mac OS X/.test(userAgent)) {
+                window.location.replace("https://www.microsoft.com/zh-cn/edge/download");
+            }
+            // Windows PC检测
+            else if (/windows|win32|win64|wow32|wow64/i.test(userAgent)) {
+                window.location.replace("https://www.microsoft.com/zh-cn/edge/download");
+            }
+            // iOS设备检测
+            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.replace("https://apps.apple.com/cn/app/id1288723196");
+            }
+            // Android设备检测
+            else if (/Android/.test(userAgent)) {
+                window.location.replace("https://www.coolapk.com/apk/com.microsoft.emmx");
+            }
+            // Linux检测
+            else if (/Linux/.test(userAgent)) {
+                window.location.replace("https://www.firefox.com.cn/");
+            }
+            // 其他设备或未知设备
+            else {
+                alert("你的设备未知 请自行寻找链接");
+            }
+        }
+    </script>
+    <link crossorigin="" rel="shortcut icon" type="image/x-icon" href="./logo-200x200.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <link rel="stylesheet" href="https://unpkg.zhimg.com/mdui@2.1.2/mdui.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://unpkg.zhimg.com/mdui@2.1.2/mdui.global.js"></script>
+    <script>
+        localStorage.getItem("wzzdy_mythemecolor") && "null" != localStorage.getItem("wzzdy_mythemecolor") && mdui.setColorScheme(localStorage.getItem("wzzdy_mythemecolor"));
+    </script>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({ id: "3IVcSI6fQo7LpaTc", ck: "3IVcSI6fQo7LpaTc" })</script>
+    <link rel="manifest" href="./manifest.json" />
+    <title>王者自定义房间</title>
+    <style data-emotion="css" data-s>
+        .myedit {
+            padding: 10px;
+        }
+
+        .mybutton {
+            margin: 10px 10px 0 10px;
+        }
+
+        .mymenu {
+            margin: 0 10px 0 10px;
+            max-height: 50vh;
+            max-width: 50vw;
+            width: 50vw;
+            overflow: auto;
+        }
+
+        .mdui-lock-screen {
+            width: unset !important;
+        }
+
+        .mychip {
+            margin: 2px;
+        }
+
+        .search_heroedit {
+            margin: 10px 0;
+        }
+
+        .herobutton {
+            margin: 2px 2px 1px 1px;
+        }
+
+        .custombutton {
+            margin: 2px 2px 1px 1px;
+        }
+
+        .setmode {
+            margin-top: 10px;
+        }
+
+        .dialog-bar {
+            padding: 25px;
+        }
+
+        .custom-tabs {
+            margin-top: 20px;
+        }
+
+        .example-top-app-bar {
+            background-color: #ffffff;
+        }
+    </style>
+    <style>
+        .color-label {
+            cursor: default;
+            color: rgb(var(--mdui-color-on-surface-variant));
+        }
+
+        .color-preset {
+            display: flex;
+            padding: 0.5rem 0;
+        }
+
+        .color-preset div {
+            cursor: pointer;
+            box-sizing: border-box;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: var(--mdui-shape-corner-extra-small);
+            border: 0.0625rem solid rgb(var(--mdui-color-outline));
+        }
+
+        .color-preset div+div {
+            margin-left: 0.5rem;
+        }
+
+        .color-preset .red {
+            background-color: #bb1614;
+        }
+
+        .color-preset .purple {
+            background-color: #9a25ae;
+        }
+
+        .color-preset .blue {
+            background-color: #0061a4;
+        }
+
+        .color-preset .green {
+            background-color: #006e1c;
+        }
+
+        .color-preset .yellow {
+            background-color: #695f00;
+        }
+
+        .color-preset .grey {
+            background-color: #006874;
+        }
+
+        .color-custom {
+            cursor: pointer;
+            box-sizing: border-box;
+            width: 1.875rem;
+            height: 1.875rem;
+            border-radius: var(--mdui-shape-corner-extra-small);
+            border: 0.0625rem solid rgb(var(--mdui-color-outline));
+            margin: 0.5rem 0;
+        }
+
+        .color-label:not(:first-child) {
+            margin-top: 0.5rem;
+        }
+
+        .color-wallpaper {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            background-size: cover;
+            background-position: center;
+            text-shadow: #fff 0.1em 0.1em 0.2em;
+            height: 8.5rem;
+            border-radius: var(--mdui-shape-corner-extra-small);
+            border: 0.0625rem solid rgb(var(--mdui-color-outline));
+            margin: 0.5rem 0;
+        }
+
+        .color-wallpaper input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        html {
+            background-color: #fff !important;
+            font-family: -apple-system, BlinkMacSystemFont, Noto Sans CJK SC, Noto Sans SC, Segoe UI, system-ui, Roboto, PingFang SC, Hiragino Sans GB, Source Han Sans SC, WenQuanYi Micro Hei, WenQuanYi Zen Hei, Helvetica Neue,
+                Microsoft YaHei, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+        }
+
+        .buttonsvg {
+            padding: 4px 2px;
+        }
+
+        .other-buttons-container {
+            display: none;
+        }
+
+        .quick-room-buttons-container {
+            display: none;
+        }
+
+        .hidden {
+            display: black;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #999;
+            border-top: 1px solid #eaeaea;
+        }
+
+        :root {
+            --mdui-color-surface: 236, 238, 240;
+            --mdui-color-outline: 255 255, 255;
+            --mdui-color-surface-container-highest: 245 246 249;
+            --mdui-color-surface-container: 255 255 255;
+            --mdui-color-primary: 110 125 149;
+            --mdui-color-on-surface-variant: 106 105 114;
+            --mdui-color-on-surface: 86 85 94;
+            --mdui-color-surface-container-high-light: 253 253 253;
+            --mdui-color-inverse-primary: 146 145 154;
+            --mdui-color-error: 181 176 198;
+            --mdui-color-secondary-container: 217 224 235;
+        }
+    </style>
+</head>
+
+<body>
+    <mdui-layout>
+        <mdui-top-app-bar class="example-top-app-bar" variant="small"
+            style="position: absolute; top: 0; right: 0; left: 0;">
+            <mdui-top-app-bar-title>
+                加载中...请稍等 <br />
+                如果长时间加载不出来 <br />
+                请检查当前网络链接情况 <br />
+                有问题请进群
+            </mdui-top-app-bar-title>
+            <mdui-button-icon icon="color_lens"
+                onclick='document.querySelector(".zhutudia").open=!0'></mdui-button-icon>
+        </mdui-top-app-bar>
+        <mdui-layout-main class="example-layout-main" style="padding: 64px 0 0;">
+            <div style="display: grid;">
+                <mdui-card style="background: #ffffff; visibility: hidden; margin: 10px 0 20px 0;" variant="outlined">
+                    <mdui-segmented-button-group full-width selects="single" style="margin: 10px 10px;">
+                        <mdui-segmented-button value="zsf" type="button"
+                            class="mdui-segmented-button-first">正式服</mdui-segmented-button>
+                        <mdui-segmented-button value="tyf" type="button"
+                            class="mdui-segmented-button-last">体验服</mdui-segmented-button>
+                    </mdui-segmented-button-group>
+                    <mdui-dropdown trigger="click" placement="auto">
+                        <mdui-text-field slot="trigger" label="地图模式" readonly="readonly" class="myedit" type="text"
+                            name></mdui-text-field>
+                        <mdui-menu class="mymenu" submenu-trigger="click hover"></mdui-menu>
+                    </mdui-dropdown>
+                    <mdui-dropdown trigger="click" placement="auto">
+                        <mdui-text-field slot="trigger" label="禁用英雄列表" readonly="readonly" class="myedit hidden"
+                            type="text" name></mdui-text-field>
+                        <mdui-menu class="mymenu" submenu-trigger="click hover"></mdui-menu>
+                    </mdui-dropdown>
+                    <mdui-dropdown trigger="click" placement="auto">
+                        <mdui-text-field slot="trigger" label="自定义配置" readonly="readonly" class="myedit hidden"
+                            type="text" name></mdui-text-field>
+                        <mdui-menu class="mymenu" submenu-trigger="click hover"></mdui-menu>
+                    </mdui-dropdown>
+                    <mdui-button class="mybutton" variant="tonal" icon="games">启动房间</mdui-button>
+                    <mdui-button class="mybutton" variant="tonal" icon="link">复制链接</mdui-button>
+                    <div class="other-buttons-container">
+                        <mdui-button class="mybutton" variant="tonal" icon="campaign">更新内容</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="chat">意见反馈</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="book">使用教程</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="add_link">更多链接</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="celebration">赞助作者</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="announcement">常见问题</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="find_in_page">英雄战力</mdui-button>
+                    </div>
+                    <mdui-button class="mybutton more-button" variant="tonal" icon="apps">更多功能</mdui-button>
+                    <mdui-button class="mybutton quick-room-button" variant="tonal"
+                        icon="rocket_launch">快捷房间</mdui-button>
+                    <div class="quick-room-buttons-container">
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">不禁英雄</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">禁用无敌</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">禁地图炮</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">禁用超标</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">坦克大战</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">回血流ㅤ</mdui-button>
+                        <mdui-button class="mybutton" variant="tonal" icon="flash_on">随机禁用</mdui-button>
+                    </div>
+                    <mdui-button class="mybutton" variant="tonal" icon="egg_alt">众星峡谷</mdui-button>
+                    <mdui-dialog close-on-overlay-click class="example-dialog" fullscreen>
+                        <mdui-top-app-bar slot="header" variant="small" class="dialog-bar">
+                            <mdui-top-app-bar-title>禁用英雄</mdui-top-app-bar-title>
+                            <mdui-button variant="text" name value type="button">关闭</mdui-button>
+                        </mdui-top-app-bar>
+                        <mdui-dropdown trigger="click" placement="auto">
+                            <mdui-button slot="trigger" variant="tonal" name value type="buttn"
+                                class="herobutton">选择方案</mdui-button>
+                            <mdui-menu class="mymenu" submenu-trigger="click hover"></mdui-menu>
+                        </mdui-dropdown>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">新建方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">分享方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">导入方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">删除方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">重命名方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">全选</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="herobutton">反选</mdui-button>
+                        <mdui-button variant="filled" name value type="buttn" class="herobutton">保存方案</mdui-button>
+                        <mdui-button variant="filled" name value type="buttn" class="herobutton">随机禁用</mdui-button>
+                        <mdui-text-field label="搜索选择禁用英雄" clearable type="text" class="search_heroedit"
+                            name></mdui-text-field>
+                        <mdui-radio-group value="" class="heromode">
+                            <mdui-radio value="">全部</mdui-radio>
+                            <mdui-radio value="1">战士</mdui-radio>
+                            <mdui-radio value="2">法师</mdui-radio>
+                            <mdui-radio value="3">坦克</mdui-radio>
+                            <mdui-radio value="4">刺客</mdui-radio>
+                            <mdui-radio value="5">射手</mdui-radio>
+                            <mdui-radio value="6">辅助</mdui-radio>
+                        </mdui-radio-group>
+                        <div class="myherolist"></div>
+                    </mdui-dialog>
+                    <mdui-dialog close-on-overlay-click class="custom-dialog" fullscreen>
+                        <mdui-top-app-bar slot="header" variant="small" class="dialog-bar">
+                            <mdui-top-app-bar-title>自定义配置</mdui-top-app-bar-title>
+                            <mdui-button variant="text" name value type="button">关闭</mdui-button>
+                        </mdui-top-app-bar>
+                        <mdui-dropdown trigger="click" placement="auto">
+                            <mdui-button slot="trigger" variant="tonal" name value type="buttn"
+                                class="custombutton">选择方案</mdui-button>
+                            <mdui-menu class="mymenu" submenu-trigger="click hover"></mdui-menu>
+                        </mdui-dropdown>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">新建方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">分享方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">导入方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">删除方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">重命名方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">高级设置</mdui-button>
+                        <mdui-button variant="filled" name value type="buttn" class="custombutton">保存方案</mdui-button>
+                        <mdui-button variant="tonal" name value type="buttn" class="custombutton">还原</mdui-button>
+                        <mdui-tabs value="tab-1" variant="secondary" class="custom-tabs">
+                            <mdui-tab value="tab-1">英雄属性</mdui-tab>
+                            <mdui-tab value="tab-2">兵线与野怪</mdui-tab>
+                            <mdui-tab value="tab-3">防御塔与水晶</mdui-tab>
+                            <mdui-tab-panel slot="panel" value="tab-1" class="CustomSettings">
+                                <mdui-radio-group value="all" class="setmode">
+                                    <mdui-radio value="all">全局统一</mdui-radio>
+                                    <mdui-radio value="zhenying">按阵营</mdui-radio>
+                                    <mdui-radio value="xvanshou">按选手</mdui-radio>
+                                </mdui-radio-group>
+                                <mdui-radio-group value="blue" style="width: 100%; display: none;" class="zhenying_xz">
+                                    <mdui-radio value="blue" checked="checked" tabindex="0">蓝方</mdui-radio>
+                                    <mdui-radio value="red" checked="checked" tabindex="0">红方</mdui-radio>
+                                </mdui-radio-group>
+                                <div class="putong"></div>
+                                <div class="zhenying" style="display: none;">
+                                    <div class="zhenying_blue"></div>
+                                    <div class="zhenying_red"></div>
+                                </div>
+                                <div class="xvanshou" style="display: none;">
+                                    <div class="xvanshou_blue">
+                                        <mdui-radio-group style="width: 100%;" class="blueheronum" name>
+                                            <mdui-radio value="1" checked="checked" tabindex="0">1号</mdui-radio>
+                                            <mdui-radio value="2" checked="checked" tabindex="0">2号</mdui-radio>
+                                            <mdui-radio value="3" checked="checked" tabindex="0">3号</mdui-radio>
+                                            <mdui-radio value="4" checked="checked" tabindex="0">4号</mdui-radio>
+                                            <mdui-radio value="5" checked="checked" tabindex="0">5号</mdui-radio>
+                                        </mdui-radio-group>
+                                    </div>
+                                    <div class="xvanshou_red">
+                                        <mdui-radio-group style="width: 100%;" class="redheronum" name>
+                                            <mdui-radio value="1" checked="checked" tabindex="0">1号</mdui-radio>
+                                            <mdui-radio value="2" checked="checked" tabindex="0">2号</mdui-radio>
+                                            <mdui-radio value="3" checked="checked" tabindex="0">3号</mdui-radio>
+                                            <mdui-radio value="4" checked="checked" tabindex="0">4号</mdui-radio>
+                                            <mdui-radio value="5" checked="checked" tabindex="0">5号</mdui-radio>
+                                        </mdui-radio-group>
+                                    </div>
+                                </div>
+                            </mdui-tab-panel>
+                            <mdui-tab-panel slot="panel" value="tab-2" class="CustomSettings">
+                                <mdui-radio-group value="all" class="setmode">
+                                    <mdui-radio value="all">全局统一</mdui-radio>
+                                    <mdui-radio value="zhenying">按阵营</mdui-radio>
+                                </mdui-radio-group>
+                                <mdui-radio-group value="blue" style="width: 100%; display: none;" class="zhenying_xz">
+                                    <mdui-radio value="blue" checked="checked" tabindex="0">蓝方</mdui-radio>
+                                    <mdui-radio value="red" checked="checked" tabindex="0">红方</mdui-radio>
+                                </mdui-radio-group>
+                                <div class="putong"></div>
+                                <div class="zhenying" style="display: none;">
+                                    <div class="zhenying_blue"></div>
+                                    <div class="zhenying_red"></div>
+                                </div>
+                            </mdui-tab-panel>
+                            <mdui-tab-panel slot="panel" value="tab-3" class="CustomSettings">
+                                <mdui-radio-group value="all" class="setmode">
+                                    <mdui-radio value="all">全局统一</mdui-radio>
+                                    <mdui-radio value="zhenying">按阵营</mdui-radio>
+                                </mdui-radio-group>
+                                <mdui-radio-group value="blue" style="width: 100%; display: none;" class="zhenying_xz">
+                                    <mdui-radio value="blue" checked="checked" tabindex="0">蓝方</mdui-radio>
+                                    <mdui-radio value="red" checked="checked" tabindex="0">红方</mdui-radio>
+                                </mdui-radio-group>
+                                <div class="putong"></div>
+                                <div class="zhenying" style="display: none;">
+                                    <div class="zhenying_blue"></div>
+                                    <div class="zhenying_red"></div>
+                                </div>
+                            </mdui-tab-panel>
+                        </mdui-tabs>
+                        <mdui-dialog class="suijitest" headline="提示" description="本弹窗一共四个输入框可供输入 如显示不全可向下滑动查看更多内容">
+                            <mdui-text-field variant="filled" type="text" name="" style="padding-top: 10px;" clearable
+                                label="地图模式"></mdui-text-field>
+                            <mdui-text-field variant="filled" type="text" name="" clearable style="padding-top: 10px;"
+                                label="禁用英雄"></mdui-text-field>
+                            <mdui-text-field variant="filled" type="text" name="" style="padding-top: 10px;"
+                                readonly="readonly" value="点击编辑配置" label="随机生成数据"></mdui-text-field>
+                            <mdui-text-field variant="filled" type="text" name="" readonly="readonly" value="点击编辑配置"
+                                style="padding-top: 10px;" label="随机打乱数据"></mdui-text-field>
+                            <mdui-button slot="action" variant="text" name="" value=""
+                                onclick='document.getElementsByClassName("suijitest")[0].open=!1'
+                                type="button">取消</mdui-button>
+                            <mdui-button slot="action" variant="text" name="" value="" onclick="entclick()"
+                                type="button">确认</mdui-button>
+                        </mdui-dialog>
+                        <mdui-dialog class="peiedit" headline="高级功能设置" description="点击下方即可编辑">
+                            <mdui-button slot="action" variant="text" name="" value=""
+                                onclick='document.getElementsByClassName("peiedit")[0].open=!1'
+                                type="button">返回</mdui-button>
+                        </mdui-dialog>
+                    </mdui-dialog>
+                </mdui-card>
+            </div>
+        </mdui-layout-main>
+    </mdui-layout>
+    <script>
+        var moreButton = document.querySelector('.more-button');
+        moreButton.textContent = '更多功能';
+        var otherButtonsContainer = document.querySelector('.other-buttons-container');
+        moreButton.addEventListener('click', function () {
+            if (quickRoomButtonsContainer.style.display === 'block') {
+                return alert("请先收纳快捷房间后查看")
+            }
+            otherButtonsContainer.style.display = otherButtonsContainer.style.display === 'block' ? 'none' : 'block';
+            if (otherButtonsContainer.style.display === 'block') {
+                moreButton.textContent = '收纳';
+            } else {
+                moreButton.textContent = '更多功能';
+            }
+        });
+        var quickRoomButton = document.querySelector('.quick-room-button');
+        var quickRoomButtonsContainer = document.querySelector('.quick-room-buttons-container');
+        var startRoomButton = document.querySelector('.mybutton[icon="games"]');
+        var copyLinkButton = document.querySelector('.mybutton[icon="link"]');
+        var moreFeaturesButton = document.querySelector('.more-button');
+
+        quickRoomButton.addEventListener('click', function () {
+            if (otherButtonsContainer.style.display === 'block') {
+                return alert("请先收纳更多功能后查看")
+            }
+            quickRoomButtonsContainer.style.display = quickRoomButtonsContainer.style.display === 'block' ? 'none' : 'block';
+            quickRoomButton.textContent = quickRoomButtonsContainer.style.display === 'block' ? '收纳' : '快捷房间';
+
+            if (quickRoomButtonsContainer.style.display === 'block') {
+                startRoomButton.style.display = 'none';
+                copyLinkButton.style.display = 'none';
+                moreFeaturesButton.style.display = 'none';
+            } else {
+                startRoomButton.style.display = '';
+                copyLinkButton.style.display = '';
+                moreFeaturesButton.style.display = '';
+            }
+
+            var hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach(function (element) {
+                element.style.display = quickRoomButtonsContainer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+    <script src="myjson.js"></script>
+    <script defer="defer" src="index.js"></script>
+    <mdui-dialog close-on-overlay-click="" class="zhutudia">
+        <mdui-top-app-bar slot="header" variant="small">
+            <mdui-top-app-bar-title>更改配色</mdui-top-app-bar-title>
+            <mdui-button class="colorbutton">还原</mdui-button>
+            <mdui-button variant="text" name="" value="" type="button"
+                onclick='document.querySelector(".zhutudia").open=!1'>关闭</mdui-button>
+        </mdui-top-app-bar>
+        <div class="color-label">预设颜色</div>
+        <div class="color-preset">
+            <div class="red"></div>
+            <div class="purple"></div>
+            <div class="blue"></div>
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="grey"></div>
+        </div>
+        <div class="color-label">自选颜色</div>
+        <input type="color" class="color-custom" />
+        <div class="color-label">从壁纸提取颜色</div>
+        <div class="color-wallpaper">请选择一张壁纸 <input type="file" accept="image/png, image/jpeg" class="color-img" />
+        </div>
+    </mdui-dialog>
+    <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8"
+        src="https://v6-widget.51.la/v6/3IVcSI6fQo7LpaTc/quote.js?theme=0&col=true&f=12&display=1,0,1,1,1,1,1,1"></script>
+    <div class="footer">
+        &copy; 版权声明：本网站最终解释权归本人所有，严禁倒卖
+    </div>
+</body>
+
+</html>

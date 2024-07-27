@@ -1,0 +1,99 @@
+
+<!DOCTYPE<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>英雄战力查询</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.9">
+<!-- 添加一个内联样式来覆盖原有的样式 -->
+<style>
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color:
+    #f4f4f4; margin: 0; padding: 0; } .container { max-width: auto; /* 限制最大宽度
+    */ margin: 0 auto; /* 水平居中 */ } .panel { border: none; } .panel-heading
+    { background-image: linear-gradient(to right, #4facfe, #00f2fe); color:
+    #fff; } .panel-body { padding: 0px; } .form-control { border-radius: 5px;
+    box-shadow: none; border-color: #ccc; } .input-group-addon { background-color:
+    #e9ecef; border-radius: 5px; } .btn-danger { background-color: #ff6b81;
+    border: none; color: white; font-size: 16px; padding: 5px 10px; border-radius:
+    5px; transition: background-color 0.3s ease; } .btn-danger:hover { background-color:
+    #ff4b69; } .img-circle { border-radius: 50%; width: 60px; /* 确保图片大小一致 */
+    height: 60px; } .alert { border: none; border-radius: 5px; margin-bottom:
+    20px; padding: 15px; } .alert-success { background-color: #d4edda; color:
+    #155724; } .alert-info { background-color: #d1ecf1; color: #0c5460; } .table-responsive
+    { background-color: #fff; } /* 版权信息样式 */ .copyright { text-align: center;
+    margin-top: 20px; color: #999; } .copyright a { color: #999; text-decoration:
+    none; } .copyright a:hover { text-decoration: underline; }
+</style>
+<link rel="stylesheet" type="text/css" href="zhanli.css" />
+<link href="https://cdn.bootcdn.net/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css"
+rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"
+type="text/javascript">
+</script>
+</head>
+<body>
+    <div class="panel-heading" style="background: linear-gradient(to right,#ffffff,#ffffff,#ffffff);">
+    </div>
+    <div class="panel-body">
+        <center>
+            <div class="alert alert-success">
+                <img class="img-circle" style="border: 2px solid #1281FF; margin-left:3px; margin-right:3px;"
+                src="https://wz.853260.com/tp.png" width="60px" height="60px"
+                id="photo">
+                <br>
+            </div>
+            <div class="alert alert-info" id="alias">
+                迟言王者战力查询系统
+            </div>
+        </center>
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="icon-ghost">
+                </i>
+                英雄全称
+            </span>
+            <input name="yxname" class="form-control" placeholder="请输入英雄名称" id="yxname">
+        </div>
+        <br />
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="icon-cup">
+                </i>
+                查询大区
+            </span>
+            <select class="form-control" id="seltname">
+                <option value="qq">
+                    安卓QQ
+                </option>
+                <option value="wx">
+                    安卓VX
+                </option>
+                <option value="ios_qq">
+                    苹果QQ
+                </option>
+                <option value="ios_wx">
+                    苹果VX
+                </option>
+            </select>
+        </div>
+        </br>
+        <center>
+            <div class="btn-group" role="group">
+                <button onclick="Startquery()" class="btn btn-danger btn-lg">
+                    开始查询
+                </button>
+            </div>
+        </center>
+    </div>
+    <div class="table-responsive" id="mydiv" style="text-align:center;">
+    </div>
+    <center>
+        <a href="https://wzzdy.onrender.com" p style="text-align:center"><span style="color: #999">Copyright &copy; 2024 迟言 all rights reserved
+        </a></span>
+        </p>
+    </center>
+    <script src="zhanli.js" type="text/javascript">
+    </script>
+</body>
+</html>

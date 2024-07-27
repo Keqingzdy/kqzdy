@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开房网站总集</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0;
+        }
+
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #eaeaea;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            padding: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            display: inline-block;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card-link:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            color: #999;
+            border-top: 1px solid #eaeaea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- 网站集合的卡片列表 -->
+        <div id="website-list"></div>
+    </div>
+<div class="footer">
+        作者已拉黑萝莉姐[山海]，请不要在我的群内出现萝莉姐[山海]自定义<br>本网页也不可能添加萝莉姐[山海]自定义
+    </div>
+    <div class="footer">
+        &copy; 2024 版权归迟言所有
+    </div>
+    <script>
+        // 网站集合的JSON对象
+        var webjson = {
+            "滑稽哥王者自定义房间": "https://huajiqaq.github.io/wzzdy/",
+            "一键创房工具": "http://dadao.kuaibiji.info/#/wzsb",
+            "小鬼自定义": "http://xg5020.top/xg.html",
+            "流年自定义": "http://xg5020.top/liunian/index.html",
+            "本网站-刻晴自定义": "http://keqingzidingyi.pxwl.xyz"
+        };
+
+        // 遍历JSON对象并添加项目到页面
+        for (var item in webjson) {
+            var card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h2 class="card-title">${item}</h2>
+                <p class="card-description"></p>
+                <a href="${webjson[item]}" class="card-link" target="_blank">访问网站</a>
+            `;
+            document.getElementById('website-list').appendChild(card);
+        }
+    </script>
+
+</body>
+
+</html>
