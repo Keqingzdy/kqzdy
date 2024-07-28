@@ -407,7 +407,7 @@ function getShortLink(longUrl) {
 var newDiv = document.createElement('div');
 
 var links = [
-    { text: '不醒人室①群：472633768', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=3gvlGhMAAjfbijQIgTnMmOWl7NkQKwnf&authKey=RGNu%2Bq%2FAxCSP6HXU5NwD7oPCz4D9%2FSOrFg%2BdxTnMC9yRQp0oYTHiZbYBaQpyTJ%2BR&noverify=0&group_code=472633768' },
+    { text: '擂台赛游戏交流群：570624408', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=7uSr0e6-DUQ7pP_OMSxHxYN-t1W9_bkE&authKey=2CWTOBT1KPX5KizT%2BgENm8n5iO7pO5RxiN9u5vQGpdX1%2BDljmgqKV9eAk5aLynHJ&noverify=0&group_code=570624408' },
     { text: '不醒人室②群：836247238', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=AeU27m-5sza6JRjkMLCO-biB5yGG3w3j&authKey=sMzY30zSy2WMJ0oMBIRlu3iKXKWDHLge%2BVslCFUhEZAhUKE%2BwhVQyRor62jDgQ56&noverify=0&group_code=836247238' },
     { text: '不醒人室③群：955174989', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=pz4LFDPV9OgSIdWfI1iZc4MW1JKBW46c&authKey=%2ByU0vz6MiFT2wqxEIydZElZvQyHorYjRv%2FsFH%2BnHxXgRctV9yAjT0XCWms0n4DL4&noverify=0&group_code=955174989' },
     { text: '不醒人室总群：973202403', url: 'https://static.gamecenter.qq.com/social-web/sop-personal-group-join/index.html?&appid=102106122&groupID=616860952&tag=4' }
