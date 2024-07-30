@@ -1,6 +1,6 @@
 window.onload = function () {
     document.getElementsByTagName("mdui-card")[0].style.visibility = "unset"
-    document.querySelector("body > mdui-layout > mdui-top-app-bar > mdui-top-app-bar-title").innerText = "小刻晴自定义"
+    document.querySelector("body > mdui-layout > mdui-top-app-bar > mdui-top-app-bar-title").innerText = "刻晴自定义5.8"
 }
 
 const tip1 = "没有配置 请先点击管理配置新建配置"
@@ -407,7 +407,7 @@ function getShortLink(longUrl) {
 var newDiv = document.createElement('div');
 
 var links = [
-    { text: '擂台赛游戏交流群：570624408', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=7uSr0e6-DUQ7pP_OMSxHxYN-t1W9_bkE&authKey=2CWTOBT1KPX5KizT%2BgENm8n5iO7pO5RxiN9u5vQGpdX1%2BDljmgqKV9eAk5aLynHJ&noverify=0&group_code=570624408' },
+    { text: '王者荣耀擂台赛游戏交流群：570624408', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=7uSr0e6-DUQ7pP_OMSxHxYN-t1W9_bkE&authKey=2CWTOBT1KPX5KizT%2BgENm8n5iO7pO5RxiN9u5vQGpdX1%2BDljmgqKV9eAk5aLynHJ&noverify=0&group_code=570624408' },
     { text: '不醒人室②群：836247238', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=AeU27m-5sza6JRjkMLCO-biB5yGG3w3j&authKey=sMzY30zSy2WMJ0oMBIRlu3iKXKWDHLge%2BVslCFUhEZAhUKE%2BwhVQyRor62jDgQ56&noverify=0&group_code=836247238' },
     { text: '不醒人室③群：955174989', url: 'http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=pz4LFDPV9OgSIdWfI1iZc4MW1JKBW46c&authKey=%2ByU0vz6MiFT2wqxEIydZElZvQyHorYjRv%2FsFH%2BnHxXgRctV9yAjT0XCWms0n4DL4&noverify=0&group_code=955174989' },
     { text: '不醒人室总群：973202403', url: 'https://static.gamecenter.qq.com/social-web/sop-personal-group-join/index.html?&appid=102106122&groupID=616860952&tag=4' }
@@ -425,7 +425,7 @@ links.forEach(function (link) {
 });
 var span = document.createElement('span');
 // 设置<span>元素的文本内容  
-span.innerHTML = '<span slot="description"><h3 style="color:red">源码出售！！</h3><br>出售本网站全套最新源码<br>全套包更新！<br>进群咨询详情<br>点击确定则随机添加群聊</span>';
+span.innerHTML = '<span slot="description"><h3 style="color:red">源码出售！！</h3><br>出售本网站全套最新源码<br>全套包更新！<br>进群咨询详情，首推加①群<br>点击确定则随机添加群聊</span>';
 mdui.dialog({
 
     headline: "源码出售中...",
